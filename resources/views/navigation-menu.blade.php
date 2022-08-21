@@ -15,6 +15,11 @@
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-jet-nav-link>
+                    <!-- 追記ここから -->
+                    <x-jet-nav-link href="{{ route('create') }}" :active="request()->routeIs('create')">
+                        新規投稿作成
+                    </x-jet-nav-link>
+                    <!-- 追記ここまで -->
                 </div>
             </div>
 
@@ -140,6 +145,11 @@
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
+            <!-- 追記ここから -->
+            <x-jet-responsive-nav-link href="{{ route('create') }}" :active="request()->routeIs('create')">
+                新規投稿作成
+            </x-jet-responsive-nav-link>
+            <!-- 追記ここまで -->
         </div>
 
         <!-- Responsive Settings Options -->

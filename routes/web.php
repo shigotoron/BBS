@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController; // 追記
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +26,10 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    // 追記ここから
+    Route::get('/create', function () {
+        return view('create');
+    })->name('create');
+    Route::post('/store', [PostController::class, 'store'])->name('store');
+    // 追記ここまで
 });
