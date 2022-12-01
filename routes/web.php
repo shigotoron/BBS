@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController; // 追記
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,19 +17,16 @@ use App\Http\Controllers\PostController; // 追記
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/post/{post_id}', [PostController::class, 'post'])->name('post');
 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-    // 追記ここから
+    Route::get('/dashboard', [PostController::class, 'show'])->name('dashboard'); // 変更
     Route::get('/create', function () {
         return view('create');
     })->name('create');
     Route::post('/store', [PostController::class, 'store'])->name('store');
-    // 追記ここまで
 });

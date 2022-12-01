@@ -17,7 +17,7 @@
                     </x-jet-nav-link>
                     <!-- 追記ここから -->
                     <x-jet-nav-link href="{{ route('create') }}" :active="request()->routeIs('create')">
-                        新規投稿作成
+                        新しい記事の作成
                     </x-jet-nav-link>
                     <!-- 追記ここまで -->
                 </div>
@@ -147,7 +147,7 @@
             </x-jet-responsive-nav-link>
             <!-- 追記ここから -->
             <x-jet-responsive-nav-link href="{{ route('create') }}" :active="request()->routeIs('create')">
-                新規投稿作成
+                新しい記事の作成
             </x-jet-responsive-nav-link>
             <!-- 追記ここまで -->
         </div>
