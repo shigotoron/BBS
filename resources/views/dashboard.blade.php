@@ -12,6 +12,7 @@
                     <th class="border border-black px-4 py-2">タイトル</th>
                     <th class="border border-black px-4 py-2">内容</th>
                     <th class="border border-black px-4 py-2">更新日時</th>
+                    <th class="border border-black px-4 py-2">操作</th> <!-- 追記 -->
                 </tr>
                 @foreach ($posts as $post)
                     <tr>
@@ -20,6 +21,7 @@
                         </td>
                         <td class="border border-black px-4 py-2">{{ Str::limit($post['content'], 60, '…' ) }}</td>
                         <td class="border border-black px-4 py-2">{{ $post['updated_at'] }}</td>
+                        <td class="border border-black px-4 py-2 text-blue-500"><a href="{{ route('edit', $post['id']) }}">編集</a></td> <!-- 追記 -->
                     </tr>
                 @endforeach
             </table>
