@@ -67,9 +67,6 @@ class PostController extends Controller
         }
     }
 
-    /**
-     * このアクションを追加
-     */
     public function delete($post_id)
     {
         $query = Post::where('id', $post_id)->where('user_id', Auth::id());

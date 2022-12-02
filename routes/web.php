@@ -29,5 +29,5 @@ Route::middleware([
     Route::post('/store', [PostController::class, 'store'])->name('store');
     Route::get('/edit/{post_id}', [PostController::class, 'edit'])->name('edit');
     Route::post('/update/{post_id}', [PostController::class, 'update'])->name('update');
-    Route::post('/delete/{post_id}', [PostController::class, 'delete'])->name('delete'); // 追記
+    Route::post('/delete/{post_id}', [PostController::class, 'delete'])->name('delete');
 });
