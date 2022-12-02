@@ -8,6 +8,12 @@ use Auth;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        $posts = Post::latest('updated_at')->get();
+        return view('welcome', compact('posts'));
+    }
+
     public function store(Request $request)
     {
         $data = $request->all(); // フォームで送信されたデータをすべてとってきます
@@ -45,9 +51,6 @@ class PostController extends Controller
         return view('edit', compact('post'));
     }
 
-    /**
-     * このアクションを追加
-     */
     public function update(Request $request, $post_id)
     {
         $data = $request->all();
@@ -59,6 +62,22 @@ class PostController extends Controller
             $query->update(['title' => $data['title'], 
                             'content' => $data['content']]);
             return redirect()->route('post', compact('post_id')); // 該当の記事にリダイレクト
+        } else {
+            abort(500); // サーバーエラー
+        }
+    }
+
+    /**
+     * このアクションを追加
+     */
+    public function delete($post_id)
+    {
+        $query = Post::where('id', $post_id)->where('user_id', Auth::id());
+
+        // ログイン中のユーザーが記事を削除しようとしていることを確認
+        if ($query->exists()) {
+            Post::destroy($post_id);
+            return redirect()->route('dashboard');
         } else {
             abort(500); // サーバーエラー
         }

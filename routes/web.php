@@ -14,9 +14,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [PostController::class, 'index'])->name('index');
 Route::get('/post/{post_id}', [PostController::class, 'post'])->name('post');
 
 Route::middleware([
@@ -29,6 +27,7 @@ Route::middleware([
         return view('create');
     })->name('create');
     Route::post('/store', [PostController::class, 'store'])->name('store');
-    Route::get('/edit/{post_id}', [PostController::class, 'edit'])->name('edit'); // 追加
-    Route::post('/update/{post_id}', [PostController::class, 'update'])->name('update'); // 追加
+    Route::get('/edit/{post_id}', [PostController::class, 'edit'])->name('edit');
+    Route::post('/update/{post_id}', [PostController::class, 'update'])->name('update');
+    Route::post('/delete/{post_id}', [PostController::class, 'delete'])->name('delete'); // 追記
 });

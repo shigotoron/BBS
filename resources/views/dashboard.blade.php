@@ -21,7 +21,7 @@
                         </td>
                         <td class="border border-black px-4 py-2">{{ Str::limit($post['content'], 60, '…' ) }}</td>
                         <td class="border border-black px-4 py-2">{{ $post['updated_at'] }}</td>
-                        <td class="border border-black px-4 py-2 text-blue-500"><a href="{{ route('edit', $post['id']) }}">編集</a></td> <!-- 追記 -->
+                        <td class="border border-black px-4 py-2 text-blue-500"><a href="{{ route('edit', $post['id']) }}">編集</a></td>
                     </tr>
                 @endforeach
             </table>
