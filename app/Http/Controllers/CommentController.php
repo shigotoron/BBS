@@ -16,7 +16,7 @@ class CommentController extends Controller
         $data = $request->all();
         $post_id = $data['post_id'];
 
-        Comment::create([
+        Comment::insertGetID([
             'content' => $data['content'], 
             'post_id' => $post_id, 
             'user_id' => Auth::id(), 
