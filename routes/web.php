@@ -24,9 +24,11 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', [PostController::class, 'show'])->name('dashboard'); // 変更
+    Route::get('/dashboard', [PostController::class, 'show'])->name('dashboard');
     Route::get('/create', function () {
         return view('create');
     })->name('create');
     Route::post('/store', [PostController::class, 'store'])->name('store');
+    Route::get('/edit/{post_id}', [PostController::class, 'edit'])->name('edit'); // 追加
+    Route::post('/update/{post_id}', [PostController::class, 'update'])->name('update'); // 追加
 });

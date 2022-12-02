@@ -30,12 +30,37 @@ class PostController extends Controller
         return view('post', compact('post'));
     }
 
-    /**
-     * このアクションを追加
-     */
     public function show()
     {
         $posts = Post::where('user_id', Auth::id())->latest('updated_at')->get();
         return view('dashboard', compact('posts'));
+    }
+
+    public function edit($post_id)
+    {
+        $post = Post::where('id', $post_id)
+                    ->where('user_id', Auth::id()) // ログイン中のユーザーが編集しようとしていることを確認
+                    ->first();
+
+        return view('edit', compact('post'));
+    }
+
+    /**
+     * このアクションを追加
+     */
+    public function update(Request $request, $post_id)
+    {
+        $data = $request->all();
+
+        $query = Post::where('id', $post_id)->where('user_id', Auth::id());
+
+        // ログイン中のユーザーが記事を更新しようとしていることを確認
+        if ($query->exists()) {
+            $query->update(['title' => $data['title'], 
+                            'content' => $data['content']]);
+            return redirect()->route('post', compact('post_id')); // 該当の記事にリダイレクト
+        } else {
+            abort(500); // サーバーエラー
+        }
     }
 }
