@@ -33,7 +33,9 @@ class PostController extends Controller
         if (is_null($post)) {
             abort(404);
         }
-        return view('post', compact('post'));
+
+        $comments = $post->comments()->get(); // 追記
+        return view('post', compact('post', 'comments')); // 修正後
     }
 
     public function show()

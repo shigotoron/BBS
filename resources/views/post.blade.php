@@ -1,6 +1,14 @@
 <x-guest-layout>
     <h1>{{ $post['title'] }}</h1>
     <p>{{ $post['content'] }}</p>
+
+    <h2>みんなのコメント</h2>
+    @forelse ($comments as $comment)
+        <p class="bg-gray-300 p-2">{{ $comment['content'] }}</p>
+    @empty
+        <p>コメントはまだありません。</p>
+    @endforelse
+
     @auth
         <h2>コメントを投稿する</h2>
         <form class="grid grid-cols-1 gap-6 text-black" method='POST' action="{{ route('store_comment') }}" enctype="multipart/form-data">
