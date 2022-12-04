@@ -1,4 +1,6 @@
 <x-app-layout>
+    <x-slot name="title">記事の編集</x-slot>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             記事の編集
