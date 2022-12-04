@@ -1,4 +1,6 @@
 <x-guest-layout>
+    <x-slot name="title">{{ $post['title'] }}</x-slot>
+
     <h1>{{ $post['title'] }}</h1>
     <p>{{ $post['content'] }}</p>
 
