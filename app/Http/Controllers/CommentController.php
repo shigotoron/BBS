@@ -31,9 +31,6 @@ class CommentController extends Controller
         return view('edit_comment', compact('comment'));
     }
 
-    /**
-     * このアクションを追加
-     */
     public function update(Request $request, $comment_id)
     {
         $data = $request->all();

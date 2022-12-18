@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Comment; // 追記
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -58,4 +59,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    /**
+     * 追記
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

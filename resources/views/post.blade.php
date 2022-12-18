@@ -6,7 +6,18 @@
 
     <h2>みんなのコメント</h2>
     @forelse ($comments as $comment)
-        <p class="bg-gray-300 p-2">{{ $comment['content'] }}</p>
+        <div class="bg-gray-300 p-2 mb-4">
+            <p class="my-2">{{ $comment['content'] }}</p>
+            @auth
+                @if ($comment->user->id === Auth::id())
+                    <button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2" 
+                            type="button" onclick="location.href='{{ route('edit_comment', $comment['id']) }}'">
+                        編集
+                    </button>
+                @endif
+            @endauth
+        </div>
+        
     @empty
         <p>コメントはまだありません。</p>
     @endforelse
