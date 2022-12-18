@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController; // 追記
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +31,7 @@ Route::middleware([
     Route::get('/edit/{post_id}', [PostController::class, 'edit'])->name('edit');
     Route::post('/update/{post_id}', [PostController::class, 'update'])->name('update');
     Route::post('/delete/{post_id}', [PostController::class, 'delete'])->name('delete');
-    Route::post('/store_comment', [CommentController::class, 'store'])->name('store_comment'); // 追記
+    Route::post('/store_comment', [CommentController::class, 'store'])->name('store_comment');
+    Route::get('/edit_comment/{comment_id}', [CommentController::class, 'edit'])->name('edit_comment'); // 追記
+    Route::post('/update_comment/{comment_id}', [CommentController::class, 'update'])->name('update_comment'); // 追記
 });
