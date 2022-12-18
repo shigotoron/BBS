@@ -32,6 +32,7 @@ Route::middleware([
     Route::post('/update/{post_id}', [PostController::class, 'update'])->name('update');
     Route::post('/delete/{post_id}', [PostController::class, 'delete'])->name('delete');
     Route::post('/store_comment', [CommentController::class, 'store'])->name('store_comment');
-    Route::get('/edit_comment/{comment_id}', [CommentController::class, 'edit'])->name('edit_comment'); // 追記
-    Route::post('/update_comment/{comment_id}', [CommentController::class, 'update'])->name('update_comment'); // 追記
+    Route::get('/edit_comment/{comment_id}', [CommentController::class, 'edit'])->name('edit_comment');
+    Route::post('/update_comment/{comment_id}', [CommentController::class, 'update'])->name('update_comment');
+    Route::post('/delete_comment/{comment_id}', [CommentController::class, 'delete'])->name('delete_comment'); // 追記
 });

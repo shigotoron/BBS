@@ -14,6 +14,15 @@
                             type="button" onclick="location.href='{{ route('edit_comment', $comment['id']) }}'">
                         編集
                     </button>
+
+                    <!-- この form タグを追加 -->
+                    <form method='POST' action="{{ route('delete_comment', $comment['id']) }}">
+                        @csrf
+                        <button type='submit' class="bg-red-600 hover:bg-red-500 text-white rounded px-4 py-2" 
+                                onclick='return confirm("コメント「{{ $comment->content }}」を削除しますか？");'>
+                            削除
+                        </button>
+                    </form>
                 @endif
             @endauth
         </div>

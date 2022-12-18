@@ -45,4 +45,21 @@ class CommentController extends Controller
             abort(500); // サーバーエラー
         }
     }
+
+    /**
+     * このアクションを追加
+     */
+    public function delete($comment_id)
+    {
+        $post_id = Comment::where('id', $comment_id)->first()->post_id;
+        $query = Comment::where('id', $comment_id)->where('user_id', Auth::id());
+
+        // ユーザーが不正な操作で、他人のコメントを削除しないかチェック
+        if ($query->exists()) {
+            Comment::destroy($comment_id);
+            return redirect()->route('post', compact('post_id')); // 該当の記事へリダイレクト
+        } else {
+            abort(500); // サーバーエラー
+        }
+    }
 }
