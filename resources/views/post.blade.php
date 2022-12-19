@@ -7,22 +7,22 @@
     <h2>みんなのコメント</h2>
     @forelse ($comments as $comment)
         <div class="bg-gray-300 p-2 mb-4">
-            <p class="my-2">{{ $comment['content'] }}</p>
+            <p class="m-0">{{ $comment['content'] }}</p>
             @auth
                 @if ($comment->user->id === Auth::id())
-                    <button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2" 
-                            type="button" onclick="location.href='{{ route('edit_comment', $comment['id']) }}'">
-                        編集
-                    </button>
-
-                    <!-- この form タグを追加 -->
-                    <form method='POST' action="{{ route('delete_comment', $comment['id']) }}">
-                        @csrf
-                        <button type='submit' class="bg-red-600 hover:bg-red-500 text-white rounded px-4 py-2" 
-                                onclick='return confirm("コメント「{{ $comment->content }}」を削除しますか？");'>
-                            削除
+                    <div class="flex flex-row-reverse mt-1">
+                        <form method='POST' action="{{ route('delete_comment', $comment['id']) }}">
+                            @csrf
+                            <button type='submit' class="bg-red-600 hover:bg-red-500 text-white rounded px-4 py-2" 
+                                    onclick='return confirm("コメント「{{ $comment->content }}」を削除しますか？");'>
+                                削除
+                            </button>
+                        </form>
+                        <button class="bg-green-600 hover:bg-green-500 text-white rounded px-4 py-2 mr-2" 
+                                type="button" onclick="location.href='{{ route('edit_comment', $comment['id']) }}'">
+                            編集
                         </button>
-                    </form>
+                    </div>
                 @endif
             @endauth
         </div>
