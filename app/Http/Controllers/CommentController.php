@@ -39,7 +39,7 @@ class CommentController extends Controller
         // ユーザーが不正な操作で他人のコメントを編集しようとしていないかチェック
         if ($query->exists()) {
             $query->update(['content' => $data['content']]); // コメントの更新
-            $post_id = Comment::where('id', $comment_id)->first()->post->id; // 該当のコメントがつく記事の id を取得
+            $post_id = Comment::where('id', $comment_id)->first()->post_id; // 該当のコメントがつく記事の id を取得
             return redirect()->route('post', compact('post_id')); // 該当の記事へリダイレクト
         } else {
             abort(500); // サーバーエラー
