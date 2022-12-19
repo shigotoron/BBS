@@ -2,12 +2,14 @@
     <x-slot name="title">{{ $post['title'] }}</x-slot>
 
     <h1>{{ $post['title'] }}</h1>
-    <p>{{ $post['content'] }}</p>
+    <div class="not-prose">
+        <pre>{{ $post['content'] }}</pre>
+    </div>
 
     <h2>みんなのコメント</h2>
     @forelse ($comments as $comment)
-        <div class="bg-gray-300 p-2 mb-4">
-            <p class="m-0">{{ $comment['content'] }}</p>
+        <div class="bg-gray-300 p-2 mb-4 not-prose">
+            <pre>{{ $comment['content'] }}</pre>
             @auth
                 @if ($comment->user->id === Auth::id())
                     <div class="flex flex-row-reverse mt-1">
