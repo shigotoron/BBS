@@ -2,6 +2,18 @@
     <x-slot name="title">{{ $post['title'] }}</x-slot>
 
     <h1>{{ $post['title'] }}</h1>
+
+    <!-- この div タグを追加 -->
+    <div class="bg-orange-300 font-bold p-2 mb-2">
+        著　　者：{{ $post->user->name }}<br>
+        <time datetime="{{ $post['created_at'] }}" itemprop="datepublished" class="mr-5">
+            作　　成：{{ (new DateTime($post['created_at']))->format("Y年m月d日") }}<br>
+        </time>
+        <time datetime="{{ $post['updated_at'] }}" itemprop="modified">
+            最終更新：{{ (new DateTime($post['updated_at']))->format("Y年m月d日") }}
+        </time>
+    </div>
+
     <div class="not-prose">
         <pre>{{ $post['content'] }}</pre>
     </div>
@@ -9,7 +21,8 @@
     <h2>みんなのコメント</h2>
     @forelse ($comments as $comment)
         <div class="bg-gray-300 p-2 mb-4 not-prose">
-            <pre>{{ $comment['content'] }}</pre>
+            <span class="text-blue-700">{{ $comment->user->name }} さんのコメント：</span><br>
+            <pre class="whitespace-pre-wrap">{{ $comment['content'] }}</pre>
             @auth
                 @if ($comment->user->id === Auth::id())
                     <div class="flex flex-row-reverse mt-1">
