@@ -15,7 +15,7 @@
     </div>
 
     <div class="not-prose">
-        <pre>{{ $post['content'] }}</pre>
+        <pre class="whitespace-pre-wrap">{{ $post['content'] }}</pre>
     </div>
 
     <h2>みんなのコメント</h2>
