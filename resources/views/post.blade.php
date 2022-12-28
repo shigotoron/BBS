@@ -6,7 +6,7 @@
     <!-- この div タグを追加 -->
     <div class="bg-orange-300 font-bold p-2 mb-2">
         著　　者：{{ $post->user->name }}<br>
-        <time datetime="{{ $post['created_at'] }}" itemprop="datepublished" class="mr-5">
+        <time datetime="{{ $post['created_at'] }}" itemprop="datepublished">
             作　　成：{{ (new DateTime($post['created_at']))->format("Y年m月d日") }}<br>
         </time>
         <time datetime="{{ $post['updated_at'] }}" itemprop="modified">
