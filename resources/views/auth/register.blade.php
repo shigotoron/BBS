@@ -55,6 +55,27 @@
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
+
+            <!--  追加 -->
+            {!! no_captcha()->input() !!}
         </form>
+
+        <!--  追加 -->
+        {!! no_captcha()->script() !!}
+        {!! no_captcha()->getApiScript() !!}
+        
     </x-jet-authentication-card>
+    <script>
+        document.querySelector('#submitButton').addEventListener('click', (event) => {
+            event.preventDefault()
+
+            grecaptcha.ready(function() {
+            grecaptcha.execute('{{config('no-captcha.sitekey')}}', {action: 'login'}).then(function(token) {
+                // submitするデータにtokenを追加
+                document.querySelector('#g-recaptcha-response').val(token)
+                document.querySelector('#form').submit()
+            })
+            })
+        })
+    </script>
 </x-guest-layout>
