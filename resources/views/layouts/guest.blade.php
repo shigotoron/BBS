@@ -20,7 +20,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <div class="flex flex-wrap justify-between">
+        <div class="flex flex-wrap justify-between mb-8">
             <div class="px-4 py-4">
                 <a href="/" class="text-sm text-gray-700 dark:text-gray-500 underline">トップページ</a>
             </div>
