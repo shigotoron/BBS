@@ -4,7 +4,7 @@
     <h1>{{ $post['title'] }}</h1>
 
     <!-- この div タグを追加 -->
-    <div class="bg-orange-300 font-bold p-2 mb-2">
+    <div class="bg-orange-300 font-bold p-3 mb-8">
         著　　者：{{ $post->user->name }}<br>
         <time datetime="{{ $post['created_at'] }}" itemprop="datepublished">
             作　　成：{{ (new DateTime($post['created_at']))->format("Y年m月d日") }}<br>
@@ -20,7 +20,7 @@
 
     <h2>みんなのコメント</h2>
     @forelse ($comments as $comment)
-        <div class="bg-gray-300 p-2 mb-4 not-prose">
+        <div class="bg-gray-300 p-3 mb-4 not-prose">
             <span class="text-blue-700">{{ $comment->user->name }} さんのコメント：</span><br>
             <pre class="whitespace-pre-wrap">{{ $comment['content'] }}</pre>
             @auth
