@@ -48,5 +48,7 @@
         <footer class="text-white h-10 bg-green-700 text-center mt-10">
             <small class="leading-10">&copy; {{ config('app.name') }}</small>
         </footer>
+
+        {!! htmlScriptTagJsApi() !!}
     </body>
 </html>

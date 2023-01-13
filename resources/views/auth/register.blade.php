@@ -8,8 +8,6 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <!--  追加 -->
-            {!! no_captcha()->input() !!}
             <div>
                 <x-jet-label for="name" value="{{ __('Name') }}" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
@@ -57,23 +55,5 @@
                 </x-jet-button>
             </div>
         </form>
-
-        <!--  追加 -->
-        {!! no_captcha()->script() !!}
-        {!! no_captcha()->getApiScript() !!}
-        
     </x-jet-authentication-card>
-    <script>
-        document.querySelector('#submitButton').addEventListener('click', (event) => {
-            event.preventDefault()
-
-            grecaptcha.ready(function() {
-            grecaptcha.execute('{{config('no-captcha.sitekey')}}', {action: 'login'}).then(function(token) {
-                // submitするデータにtokenを追加
-                document.querySelector('#g-recaptcha-response').val(token)
-                document.querySelector('#form').submit()
-            })
-            })
-        })
-    </script>
 </x-guest-layout>
