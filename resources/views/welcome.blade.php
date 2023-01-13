@@ -11,7 +11,7 @@
         @foreach ($posts as $post)
             <tr>
                 <td class="border border-black px-4 py-2">
-                    <a href="{{ route('post', $post['id']) }}" class="text-blue-500">{{ $post['title'] }}</a>
+                    <a href="{{ route('post', $post['id']) }}" class="text-blue-500">{{ Str::limit($post['title'], 80, '...') }}</a>
                 </td>
                 <td class="border border-black px-4 py-2">{{ Str::limit($post['content'], 80, '...') }}</td>
             </tr>
