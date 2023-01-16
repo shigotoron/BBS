@@ -3,7 +3,6 @@
 
     <h1>{{ $post['title'] }}</h1>
 
-    <!-- この div タグを追加 -->
     <div class="bg-orange-300 font-bold p-3 mb-8">
         著　　者：{{ $post->user->name }}<br>
         <time datetime="{{ $post['created_at'] }}" itemprop="datepublished">
