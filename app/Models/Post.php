@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Comment;
-use App\Models\User; // 追記
+use App\Models\User;
 
 class Post extends Model
 {
@@ -16,9 +16,6 @@ class Post extends Model
         return $this->hasMany(Comment::class);
     }
 
-    /**
-     * 追記
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
