@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use Auth;
+use Storage;
 
 class PostController extends Controller
 {
@@ -17,11 +18,20 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $data = $request->all(); // フォームで送信されたデータをすべてとってきます
+        $image = $request->file('image');
+
+        if($request->hasFile('image')){
+            $path = Storage::put('/public', $image);
+            $image_url = Storage::url($path);
+        }else{
+            $image_url = null;
+        }
 
         $post_id = Post::insertGetId([
             'user_id' => Auth::id(), // ログイン中のユーザーの ID を格納します
             'title' => $data['title'], // 入力された文字列を格納します
             'content' => $data['content'], // 入力された文字列を格納します
+            'image_url' => $image_url, 
         ]);
 
         return redirect()->route('post', compact('post_id'));

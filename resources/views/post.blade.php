@@ -13,6 +13,8 @@
         </time>
     </div>
 
+    <div><img src="{{ $post['image_url'] }}" alt="画像なし"></div>
+
     <div class="not-prose">
         <pre class="whitespace-pre-wrap">{{ $post['content'] }}</pre>
     </div>

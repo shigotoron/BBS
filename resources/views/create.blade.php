@@ -16,6 +16,10 @@
                     <input name="title" type="text" class="mt-1 block w-full rounded-md shadow-sm">
                 </label>
                 <label class="block">
+                    <span class="text-gray-700">画像</span>
+                    <input type="file" class="block" name='image' id="image">
+                </label>
+                <label class="block">
                     <span class="text-gray-700">内容</span>
                     <textarea id="markdown-editor" class="block w-full mt-1 rounded-md" name="content" rows="5"></textarea>
                 </label>
