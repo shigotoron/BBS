@@ -1,6 +1,6 @@
 <x-guest-layout>
     <h1>Laravel 掲示板</h1>
-    <p>これはLaravelで作った電子掲示板です。</p>
+    <p>これはLaravelで作った電子掲示板です。作成した記事をネット上に公開することができます。実在しないメールアドレスでも会員登録できますが、その場合、パスワードを忘れると面倒なことになります。</p>
     <h2>みんなの記事一覧</h2>
     <table class="table-auto border-solid border-black border-2" style="border-collapse: separate; border-spacing: 0">
         <tr class="bg-green-300">
