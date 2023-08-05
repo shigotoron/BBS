@@ -13,7 +13,9 @@
         </time>
     </div>
 
-    <div><img src="{{ $post['image_url'] }}" alt="画像なし"></div>
+    @if (isset($post['image_url']))
+        <div><img src="{{ $post['image_url'] }}" alt="画像なし"></div>
+    @endif
 
     <div class="not-prose">
         <pre class="whitespace-pre-wrap">{{ $post['content'] }}</pre>

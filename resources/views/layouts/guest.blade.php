@@ -22,7 +22,7 @@
     <body>
         <div class="flex flex-wrap justify-between mb-8">
             <div class="px-4 py-4">
-                <a href="/bbs/" class="text-sm text-gray-700 underline dark:text-gray-500">トップページ</a>
+                <a href="/" class="text-sm text-gray-700 underline dark:text-gray-500">トップページ</a>
             </div>
             @if (Route::has('login'))
                 <div class="px-4 py-4 text-right sm:block">
