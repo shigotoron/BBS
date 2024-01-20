@@ -14,7 +14,7 @@
     </div>
 
     @if (isset($post['image_url']))
-        <div><img src="{{ $post['image_url'] }}" alt="画像なし"></div>
+        <div><img src="{{ $post['image_url'] }}" alt="画像が見つかりません"></div>
     @endif
 
     <div class="not-prose">
@@ -29,10 +29,9 @@
             @auth
                 @if ($comment->user->id === Auth::id())
                     <div class="flex flex-row-reverse mt-1">
-                        <form method='POST' action="{{ route('delete_comment', $comment['id']) }}">
+                        <form method='POST' action="{{ route('delete_comment', $comment['id']) }}" onsubmit='delete_comment("{{ $comment['content'] }}")'>
                             @csrf
-                            <button type='submit' class="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-500" 
-                                    onclick='return confirm("コメント「{{ Str::limit($comment->content, 80, '...') }}」を削除しますか？");'>
+                            <button type='submit' class="px-4 py-2 text-white bg-red-600 rounded hover:bg-red-500">
                                 削除
                             </button>
                         </form>
@@ -64,4 +63,14 @@
     @else
         <p>ログインするとコメントを投稿することができます。</p>
     @endauth
+    <script type="text/javascript">
+        function delete_comment(content) {
+            let checked = confirm("コメント「" + content + "」を削除しますか？");
+            if (checked) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    </script>
 </x-guest-layout>
