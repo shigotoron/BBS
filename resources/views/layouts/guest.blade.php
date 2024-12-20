@@ -43,6 +43,5 @@
             <small class="leading-10">&copy; {{ config('app.name') }}</small>
         </footer>
 
-        {!! htmlScriptTagJsApi() !!}
     </body>
 </html>
