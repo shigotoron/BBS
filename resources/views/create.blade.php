@@ -13,7 +13,7 @@
                 @csrf
                 <label class="block">
                     <span class="text-gray-700">タイトル</span>
-                    <input name="title" type="text" class="mt-1 block w-full rounded-md shadow-sm">
+                    <input name="title" type="text" class="mt-1 block w-full rounded-md shadow-xs">
                 </label>
                 <label class="block">
                     <span class="text-gray-700">画像</span>
@@ -23,7 +23,7 @@
                     <span class="text-gray-700">内容</span>
                     <textarea id="markdown-editor" class="block w-full mt-1 rounded-md" name="content" rows="5"></textarea>
                 </label>
-                <button type='submit' class="w-20 bg-blue-600 hover:bg-blue-500 text-white rounded px-4 py-2">投稿</button>
+                <button type='submit' class="w-20 bg-blue-600 hover:bg-blue-500 text-white rounded-sm px-4 py-2">投稿</button>
             </form>
         </div>
     </div>
